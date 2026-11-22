@@ -105,7 +105,7 @@ describe('run-gate Composite Action Simulation', () => {
     const result = executeGate('lint', 'echo "All checks passed"');
     expect(result.exitCode).toBe(0);
     expect(result.status).toBe('passed');
-    expect(parseFloat(result.duration)).toBeGreaterThanOrEqual(0);
+    expect(Number.parseFloat(result.duration)).toBeGreaterThanOrEqual(0);
   });
 
   it('captures error snippet and exit code when command fails', () => {

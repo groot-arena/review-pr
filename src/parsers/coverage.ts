@@ -133,8 +133,8 @@ export function parseLcov(content: string): Map<string, FileCoverageData> {
     } else if (line.startsWith('DA:')) {
       const parts = line.substring(3).split(',');
       if (parts[0] && parts[1]) {
-        const lineNum = parseInt(parts[0], 10);
-        const hitCount = parseInt(parts[1], 10);
+        const lineNum = Number.parseInt(parts[0], 10);
+        const hitCount = Number.parseInt(parts[1], 10);
         linesMap.set(lineNum, hitCount);
       }
     } else if (line === 'end_of_record') {
@@ -189,9 +189,9 @@ export function parseCoberturaOrJacoco(xmlContent: string): Map<string, FileCove
         const lineList = (linesContainer['line'] as Array<Record<string, unknown>> | undefined) || [];
 
         for (const lineObj of lineList) {
-          const num = parseInt(String(lineObj['@_number']), 10);
-          const hits = parseInt(String(lineObj['@_hits']), 10) || 0;
-          if (!isNaN(num)) {
+          const num = Number.parseInt(String(lineObj['@_number']), 10);
+          const hits = Number.parseInt(String(lineObj['@_hits']), 10) || 0;
+          if (!Number.isNaN(num)) {
             linesMap.set(num, hits);
           }
         }
@@ -226,9 +226,9 @@ export function parseCoberturaOrJacoco(xmlContent: string): Map<string, FileCove
 
         const lineList = (sf['line'] as Array<Record<string, unknown>> | undefined) || [];
         for (const lineObj of lineList) {
-          const nr = parseInt(String(lineObj['@_nr']), 10);
-          const ci = parseInt(String(lineObj['@_ci']), 10) || 0; // covered instructions
-          if (!isNaN(nr)) {
+          const nr = Number.parseInt(String(lineObj['@_nr']), 10);
+          const ci = Number.parseInt(String(lineObj['@_ci']), 10) || 0; // covered instructions
+          if (!Number.isNaN(nr)) {
             linesMap.set(nr, ci > 0 ? 1 : 0);
           }
         }

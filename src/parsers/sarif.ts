@@ -154,10 +154,10 @@ function parseSarif(log: SarifLog): SarifReport {
       const tags = ruleObj?.properties?.tags || [];
       const isSecurity =
         tags.some((t) => t.toLowerCase().includes('security') || t.toLowerCase().startsWith('cwe-')) ||
-        (secSeverity !== undefined && parseFloat(String(secSeverity)) >= 7.0);
+        (secSeverity !== undefined && Number.parseFloat(String(secSeverity)) >= 7.0);
 
       let severity: FindingSeverity = 'warning';
-      if (isSecurity && (rawLevel === 'error' || (secSeverity !== undefined && parseFloat(String(secSeverity)) >= 7.0))) {
+      if (isSecurity && (rawLevel === 'error' || (secSeverity !== undefined && Number.parseFloat(String(secSeverity)) >= 7.0))) {
         severity = 'critical';
       } else if (rawLevel === 'error') {
         severity = 'error';

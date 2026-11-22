@@ -66,7 +66,7 @@ export async function run(): Promise<void> {
 
     // Post to PR if PR context & token available
     const context = github.context;
-    const prNumber = context.payload.pull_request?.number || (process.env['PR_NUMBER'] ? parseInt(process.env['PR_NUMBER'], 10) : undefined);
+    const prNumber = context.payload.pull_request?.number || (process.env['PR_NUMBER'] ? Number.parseInt(process.env['PR_NUMBER'], 10) : undefined);
     let repoOwner = '';
     let repoName = '';
     const repoEnv = process.env['GITHUB_REPOSITORY'];

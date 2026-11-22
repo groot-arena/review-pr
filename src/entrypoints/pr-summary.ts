@@ -153,7 +153,7 @@ export async function run(): Promise<void> {
     await core.summary.addRaw(markdownSummary).write();
 
     // 9. Upsert Sticky PR Comment
-    const prNumber = context.payload.pull_request?.number || (process.env['PR_NUMBER'] ? parseInt(process.env['PR_NUMBER'], 10) : undefined);
+    const prNumber = context.payload.pull_request?.number || (process.env['PR_NUMBER'] ? Number.parseInt(process.env['PR_NUMBER'], 10) : undefined);
 
     if (prNumber && inputs.githubToken && repoOwner && repoName) {
       const octokit = github.getOctokit(inputs.githubToken);

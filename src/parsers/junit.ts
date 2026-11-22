@@ -71,7 +71,7 @@ export function parseJUnitXml(xmlContent: string): TestResult {
   function collectSuites(suiteList: RawTestSuite[]) {
     for (const suite of suiteList) {
       if (suite['@_time'] !== undefined) {
-        duration += parseFloat(String(suite['@_time'])) || 0;
+        duration += Number.parseFloat(String(suite['@_time'])) || 0;
       }
 
       if (suite.testcase && Array.isArray(suite.testcase)) {

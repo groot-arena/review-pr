@@ -41,7 +41,7 @@ export function parseGitDiff(diffText: string, commits: GitCommit[] = []): Parse
     if (line.startsWith('@@ ')) {
       const chunkMatch = line.match(/^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
       if (chunkMatch?.[1]) {
-        currentNewLine = parseInt(chunkMatch[1], 10);
+        currentNewLine = Number.parseInt(chunkMatch[1], 10);
       }
       continue;
     }
