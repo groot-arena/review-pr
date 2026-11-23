@@ -1,0 +1,23 @@
+# Cline / Roo Code Rules
+
+This repository enforces an AI-Native Orchestrator-Subagent Framework. The Single Source of Truth (SSOT) is located in `.ai/`.
+
+## Master References
+- **Master SSOT**: [.ai/README.md](.ai/README.md)
+- **Universal Agent Gateway**: [AGENTS.md](AGENTS.md)
+
+## Agent Operational Protocol
+- For non-trivial tasks, follow the Orchestrator loop defined in [.ai/agents/orchestrator.md](.ai/agents/orchestrator.md) and [.ai/rules/orchestration-protocol.md](.ai/rules/orchestration-protocol.md).
+- Confine edits to designated files per task contract.
+
+## Technical Guardrails
+1. **Strict ESM**: Include `.js` in all relative TypeScript imports.
+2. **Number Parsing**: Use `Number.parseInt(str, 10)` and `Number.parseFloat(str)` exclusively.
+3. **Security**: Zero CVE policy (`npm audit`); all GitHub Actions must use 40-character commit SHAs.
+4. **Coverage**: Vitest coverage must remain $\ge 80\%$.
+
+## Verification Command
+Run before finishing any task:
+```bash
+npm run typecheck && npm run lint && npm run test:coverage
+```

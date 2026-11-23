@@ -1,0 +1,19 @@
+# Windsurf Cascade Agent Rules
+
+This repository enforces an AI-Native Single Source of Truth (SSOT) located in `.ai/`.
+
+## Mandatory Guidelines
+1. **SSOT Master Router**: Refer to [.ai/README.md](.ai/README.md) for full architecture and governance details.
+2. **Orchestrator Protocol**: Complex or multi-step operations must follow the Orchestrator loop defined in [.ai/agents/orchestrator.md](.ai/agents/orchestrator.md) and [.ai/rules/orchestration-protocol.md](.ai/rules/orchestration-protocol.md).
+3. **TypeScript Standards**:
+   - Strict ESM (`NodeNext`): relative imports require `.js` extensions.
+   - Always use `Number.parseInt(str, 10)` and `Number.parseFloat(str)`.
+   - No `any` types; validate runtime inputs with Zod (`safeParse`).
+   - Reference: [.ai/rules/typescript-standards.md](.ai/rules/typescript-standards.md).
+4. **Security & Workflow Policies**:
+   - Zero-CVE policy (`npm audit`).
+   - Pin third-party GitHub Actions to 40-character commit SHAs.
+   - Reference: [.ai/rules/security-policies.md](.ai/rules/security-policies.md) and [.ai/rules/action-workflow-rules.md](.ai/rules/action-workflow-rules.md).
+5. **Verification Pipeline**:
+   - Prior to proposing changes, run: `npm run typecheck && npm run lint && npm run test:coverage`.
+   - Reference: [.ai/skills/build-and-verify/SKILL.md](.ai/skills/build-and-verify/SKILL.md).
